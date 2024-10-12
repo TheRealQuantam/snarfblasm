@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 using System.IO;
 using snarfblasm;
 using Romulus.Patch;
@@ -454,30 +454,30 @@ namespace snarfblasm
 
         class FileReader : IFileSystem
         {
-            public const string Psuedo_Form = "%form%";
-            public const string Pseudo_Clip = "%clip%";
+            /*public const string Psuedo_Form = "%form%";
+            public const string Pseudo_Clip = "%clip%";*/
 
             #region IFileSystem Members
 
             public string GetFileText(string filename) {
-                if (filename.Equals(Psuedo_Form, StringComparison.InvariantCultureIgnoreCase)) {
+                /*if (filename.Equals(Psuedo_Form, StringComparison.InvariantCultureIgnoreCase)) {
                     return snarfblasm.TextForm.GetText();
                 } else if (filename.Equals(Pseudo_Clip, StringComparison.InvariantCultureIgnoreCase)) {
                     return Clipboard.ContainsText() ? Clipboard.GetText() : string.Empty;
-                } else {
+                } else*/ {
                     return System.IO.File.ReadAllText(filename);
                 }
             }
 
             public void WriteFile(string filename, byte[] data) {
-                if (filename.Equals(Psuedo_Form, StringComparison.InvariantCultureIgnoreCase)) {
+                /*if (filename.Equals(Psuedo_Form, StringComparison.InvariantCultureIgnoreCase)) {
                     TextForm.GetText(Romulus.Hex.FormatHex(data));
                 } else if (filename.Equals(Pseudo_Clip, StringComparison.InvariantCultureIgnoreCase)) {
                     if (data.Length == 0)
                         Clipboard.SetText(" ");
                     else
                         Clipboard.SetText(Romulus.Hex.FormatHex(data));
-                } else {
+                } else*/ {
                     File.WriteAllBytes(filename, data);
                 }
             }
@@ -495,7 +495,7 @@ namespace snarfblasm
 
 
             public long GetFileSize(string filename) {
-                if (filename.Equals(Psuedo_Form, StringComparison.InvariantCultureIgnoreCase)) return 0;
+                //if (filename.Equals(Psuedo_Form, StringComparison.InvariantCultureIgnoreCase)) return 0;
 
                 //   System.Security.SecurityException:
                 //     The caller does not have the required permission.
@@ -531,7 +531,7 @@ namespace snarfblasm
             }
 
             public bool FileExists(string name) {
-                if (name.Equals(Psuedo_Form, StringComparison.InvariantCultureIgnoreCase)) return true;
+                //if (name.Equals(Psuedo_Form, StringComparison.InvariantCultureIgnoreCase)) return true;
 
                 return File.Exists(name);
             }

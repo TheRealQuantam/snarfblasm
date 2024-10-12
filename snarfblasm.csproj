@@ -6,14 +6,21 @@
     <OutputPath>bin\x86\Debug\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <StartupObject>
     </StartupObject>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <UseWindowsForms>false</UseWindowsForms>
+    <ImportWindowsDesktopTargets>false</ImportWindowsDesktopTargets>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="TextForm.cs" />
+    <Compile Remove="TextForm.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="TextForm.resx" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="assembler\ExpressionEvaluator %28old%29.cs" />
   </ItemGroup>
